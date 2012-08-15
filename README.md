@@ -56,3 +56,6 @@ cp insight-plugin-jsf-x.x.jar tcServer/spring-insight-instance/insight/collectio
 <li>If you can see the JSF plugin it's installed and running.</li>
 <li>Run through your application in a way you're sure exercises JSF. Then go back to the Spring Insight dashboard to see the traces.</li>
 </ul>
+
+<h2>Testing the plugin</h2>
+There is a sample web app that can be used to test the plugin.  See here for details https://github.com/rhart/spring-insight-jsf-plugin/tree/master/samples/salary-calculator-webapp
