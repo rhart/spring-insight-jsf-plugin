@@ -5,9 +5,11 @@ Spring Insight runs in the SpringSource tc Server.  See http://www.springsource.
 <h2>What does it do?</h2>
 
 It provides instrumentation for the following aspects of the JSF web framework:
-All lifecyle phase executions
-Managed bean operations
-Validator operations
+<ul>
+<li>All lifecyle phase executions</li>
+<li>Managed bean operations</li>
+<li>Validator operations</li>
+</ul>
 
 <h2>Compatability</h2>
 
