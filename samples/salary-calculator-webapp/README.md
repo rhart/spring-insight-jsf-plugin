@@ -2,7 +2,7 @@
 
 This sample web app exercies all the aspects of the JSF web framework instrumented by the JSF Plugin for Spring Insight.
 
-<h2>Running the app</h2>
+<h2>Running the web app</h2>
 
 Download the latest WAR from https://github.com/rhart/spring-insight-jsf-plugin/downloads
 
@@ -22,7 +22,7 @@ You'll need to have tc Server Developer Edition installed.  Deploy the WAR to th
 <h2>Testing the plugin</h2>
 
 <ul>
-<li>Browse to http://localhost:8080/salary-calculator-webapp to see the home page of the sample app.</li>
+<li>Browse to http://localhost:8080/salary-calculator-webapp to see the home page of the sample web app.</li>
 <li>Click 'Calculate' without entering anything in the fields to exercie the JSF validators.</li>
 <li>Enter correct values in the fields and click 'Calculate' again.</li>
 <li>Browse to http://localhost:8080/insight to see the Spring Insight dashboard.</li>
