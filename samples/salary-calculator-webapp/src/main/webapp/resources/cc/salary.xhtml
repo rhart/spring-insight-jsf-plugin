@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="nameLabel" />
+		<composite:attribute name="nameVal" />
+		<composite:attribute name="ageLabel" />
+		<composite:attribute name="ageVal" />
+		<composite:attribute name="gradeLabel" />
+		<composite:attribute name="gradeVal" />
+		<composite:attribute name="salaryLabel" />
+		<composite:attribute name="salaryVal" />
+		<composite:attribute name="yearsOfServiceLabel" />
+		<composite:attribute name="yearsOfServiceVal" />
+		<composite:attribute name="calculateButtonLabel" />
+		<composite:attribute name="calculateButtonAction" method-signature="java.lang.String action()" />
+	</composite:interface>
+	
+	<composite:implementation xmlns:cc="http://java.sun.com/jsf/composite/cc">
+		<h:form>
+			<h:messages style="color:red;" />
+			<h:panelGrid columns="4" id="textPanel">
+				<h:outputText value="#{cc.attrs.nameLabel} :" /> 
+				<h:inputText id="name" value="#{cc.attrs.nameVal}" required="true" requiredMessage="#{cc.attrs.nameLabel} is required">
+					<f:validator validatorId="NameValidator" />
+				</h:inputText>
+	 
+				<h:outputText value="#{cc.attrs.ageLabel} :" /> 
+				<h:inputText id="age" value="#{cc.attrs.ageVal}" required="true" requiredMessage="#{cc.attrs.ageLabel} is required">
+					<f:validator validatorId="AgeValidator" />
+				</h:inputText>
+				
+				<h:outputText value="#{cc.attrs.gradeLabel} :" />
+	 			<h:inputText id="grade" value="#{cc.attrs.gradeVal}" required="true" requiredMessage="#{cc.attrs.gradeLabel} is required">
+					<f:validator validatorId="GradeValidator" />
+				</h:inputText>
+	 			
+	 			<h:outputText value="#{cc.attrs.yearsOfServiceLabel}" />
+	  			<h:inputText id="yearsOfService" value="#{cc.attrs.yearsOfServiceVal}" required="true" requiredMessage="#{cc.attrs.yearsOfServiceLabel} is required">
+					<f:validator validatorId="YearsInServiceValidator" />
+				</h:inputText>
+			</h:panelGrid>
+			<h:commandButton action="#{cc.attrs.calculateButtonAction}" value="#{cc.attrs.calculateButtonLabel}" />
+		</h:form>
+	</composite:implementation>
+</html>

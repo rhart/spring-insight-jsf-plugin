@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite/cc">
+
+	<h:body>
+		<fieldset>
+			<legend>Salary calculator</legend>
+
+			<cc:salary nameLabel="Name" nameVal="#{personBean.name}" 
+				ageLabel="Age" ageVal="#{personBean.age}" 
+				gradeLabel="Grade" gradeVal="#{personBean.grade}" 
+				yearsOfServiceLabel="Years in service" yearsOfServiceVal="#{personBean.yearsOfService}"
+				calculateButtonLabel="Calculate" calculateButtonAction="#{personBean.calculateSalary}" />
+	
+			#{personBean.name} you can expect a salary of £#{personBean.salary}
+	
+		</fieldset>
+	</h:body>
+</html>
