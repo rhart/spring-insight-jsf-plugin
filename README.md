@@ -44,7 +44,7 @@ Now copy the plugin jar to the right place under <code>tcServer</code>.
 
 <pre>
 <code>
-cp target/insight-plugin-jsf-x.x.jar tcServer/spring-insight-instance/insight/collection-plugins
+cp insight-plugin-jsf-x.x.jar tcServer/spring-insight-instance/insight/collection-plugins
 </code>
 </pre>
 
