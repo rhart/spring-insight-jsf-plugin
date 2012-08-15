@@ -9,16 +9,18 @@ import com.springsource.insight.collection.method.MethodOperationCollectionAspec
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
 
-public aspect LifecycleExecuteOperationCollectionAspect
-    extends MethodOperationCollectionAspect {
+public aspect LifecycleExecuteOperationCollectionAspect extends
+		MethodOperationCollectionAspect {
 
-    static final OperationType TYPE = OperationType.valueOf("jsf_lifecycle_execute");
+	static final OperationType TYPE = OperationType
+			.valueOf("jsf_lifecycle_execute");
 
-    public pointcut collectionPoint()
+	public pointcut collectionPoint()
         : execution(void Lifecycle.execute(FacesContext));
 
-    @Override
-    protected Operation createOperation(JoinPoint jp) {
-        return super.createOperation(jp).type(TYPE).label("JSF Lifecycle Execute");
-    }
+	@Override
+	protected Operation createOperation(JoinPoint jp) {
+		return super.createOperation(jp).type(TYPE)
+				.label("JSF Lifecycle Execute");
+	}
 }

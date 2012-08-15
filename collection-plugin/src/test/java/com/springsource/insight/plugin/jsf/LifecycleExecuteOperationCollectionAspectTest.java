@@ -15,8 +15,7 @@ import com.springsource.insight.intercept.operation.Operation;
 
 /**
  * This test verifies that {@link LifecycleExecuteOperation} is correctly
- * captured by the aspect,
- * {@link LifecycleExecuteOperationCollectionAspect}.
+ * captured by the aspect, {@link LifecycleExecuteOperationCollectionAspect}.
  */
 public class LifecycleExecuteOperationCollectionAspectTest extends
 		OperationCollectionAspectTestSupport {
@@ -52,7 +51,7 @@ public class LifecycleExecuteOperationCollectionAspectTest extends
 
 		@Override
 		public void addPhaseListener(PhaseListener listener) {
-			
+
 		}
 
 		@Override
@@ -62,12 +61,12 @@ public class LifecycleExecuteOperationCollectionAspectTest extends
 
 		@Override
 		public void removePhaseListener(PhaseListener listener) {
-			
+
 		}
 
 		@Override
 		public void render(FacesContext context) throws FacesException {
-			
+
 		}
 
 	}

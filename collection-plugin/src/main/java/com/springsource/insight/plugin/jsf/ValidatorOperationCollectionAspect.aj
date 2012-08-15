@@ -1,6 +1,8 @@
 package com.springsource.insight.plugin.jsf;
 
-import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.Validator;
 
 import org.aspectj.lang.JoinPoint;
 
@@ -8,20 +10,19 @@ import com.springsource.insight.collection.method.MethodOperationCollectionAspec
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
 
-public aspect ManagedBeanOperationCollectionAspect extends
+public aspect ValidatorOperationCollectionAspect extends
 		MethodOperationCollectionAspect {
 
-	static final OperationType TYPE = OperationType.valueOf("jsf_managed_bean");
+	static final OperationType TYPE = OperationType.valueOf("jsf_validator");
 
 	public pointcut collectionPoint()
-        : execution(public * (@ManagedBean *).*(..));
+        : execution(public void Validator.validate(FacesContext, UIComponent, Object));
 
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
-		StringBuilder label = new StringBuilder("JSF Managed Bean (");
+		StringBuilder label = new StringBuilder("JSF Validator (");
 		label.append(jp.getTarget().getClass().getSimpleName());
 		label.append(")");
 		return super.createOperation(jp).type(TYPE).label(label.toString());
 	}
-
 }

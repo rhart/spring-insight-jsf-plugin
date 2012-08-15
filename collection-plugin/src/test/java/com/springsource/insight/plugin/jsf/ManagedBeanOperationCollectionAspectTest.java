@@ -11,13 +11,12 @@ import com.springsource.insight.collection.OperationCollectionAspectTestSupport;
 import com.springsource.insight.intercept.operation.Operation;
 
 /**
- * This test verifies that {@link ManagedBean} is correctly
- * captured by the aspect,
- * {@link ManagedBeanOperationCollectionAspect}.
+ * This test verifies that {@link ManagedBean} is correctly captured by the
+ * aspect, {@link ManagedBeanOperationCollectionAspect}.
  */
 public class ManagedBeanOperationCollectionAspectTest extends
 		OperationCollectionAspectTestSupport {
-	
+
 	@Test
 	public void myOperationCollected() {
 		/**
@@ -36,10 +35,11 @@ public class ManagedBeanOperationCollectionAspectTest extends
 		/**
 		 * Third step: Validate that our operation has been created as we expect
 		 */
-		assertEquals(MockManagedBean.class.getName(), op.getSourceCodeLocation().getClassName());
+		assertEquals(MockManagedBean.class.getName(), op
+				.getSourceCodeLocation().getClassName());
 		assertEquals("doSomething", op.getSourceCodeLocation().getMethodName());
 	}
-		
+
 	@Test
 	public void myOtherOperationCollected() {
 		/**
@@ -58,8 +58,10 @@ public class ManagedBeanOperationCollectionAspectTest extends
 		/**
 		 * Third step: Validate that our operation has been created as we expect
 		 */
-		assertEquals(MockManagedBean.class.getName(), op.getSourceCodeLocation().getClassName());
-		assertEquals("doSomethingElse", op.getSourceCodeLocation().getMethodName());
+		assertEquals(MockManagedBean.class.getName(), op
+				.getSourceCodeLocation().getClassName());
+		assertEquals("doSomethingElse", op.getSourceCodeLocation()
+				.getMethodName());
 	}
 
 	@ManagedBean
@@ -68,7 +70,7 @@ public class ManagedBeanOperationCollectionAspectTest extends
 		public String doSomething() {
 			return "didSomething";
 		}
-		
+
 		public String doSomethingElse() {
 			return "didSomethingElse";
 		}

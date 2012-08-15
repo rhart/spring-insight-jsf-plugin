@@ -10,8 +10,8 @@ import com.springsource.insight.collection.OperationCollectionAspectTestSupport;
 import com.springsource.insight.intercept.operation.Operation;
 
 public class PhaseExecutorOperationCollectionAspectTest extends
-	OperationCollectionAspectTestSupport {	
-	
+		OperationCollectionAspectTestSupport {
+
 	@Test
 	public void testExecuteMethodCollected() {
 		/**
