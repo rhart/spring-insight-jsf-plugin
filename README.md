@@ -1,6 +1,6 @@
 <h1>JSF plugin for Spring Insight</h1>
 
-Spring Insight runs in the SpringSource tc Server.  See http://www.springsource.org/insight for details.  This plugin adds instrumentation for web applications that use Java Server Faces (JSF) for the web framework.  See (http://java.sun.com/javaee/javaserverfaces/overview.html) for details. 
+Spring Insight runs in the VMware vFabric tc Server.  See http://www.springsource.org/insight for details.  This plugin adds instrumentation for web applications that use Java Server Faces (JSF) for their web framework.  See (http://java.sun.com/javaee/javaserverfaces/overview.html) for details. 
 
 <h2>What does it do?</h2>
 
@@ -38,20 +38,20 @@ mvn clean package
 </code>
 </pre>
 
-You'll need to have tc Server Developer Edition installed. Let's call the location of that <code>tcServer</code>.
+You'll need to have vFabric tc Server Developer Edition installed. Let's call the location of that <code>tcServer</code>.
 
 Now copy the plugin jar to the right place under <code>tcServer</code>.
 
 <pre>
 <code>
-cp insight-plugin-jsf-x.x.jar tcServer/spring-insight-instance/insight/collection-plugins
+cp insight-plugin-jsf-x.x.x.RELEASE.jar tcServer/spring-insight-instance/insight/collection-plugins
 </code>
 </pre>
 
 <h2>Running the plugin</h2>
 
 <ul>
-<li>Start up Spring Insight Server as usual (see the Spring tc Server Developer Edition documentation) and make sure your WAR file is loaded. Start your application and make sure it's running.</li>
+<li>Start up vFabric tc Server as usual (see the vFabric tc Server Developer Edition documentation) and make sure your WAR file is loaded. Start your application and make sure it's running.</li>
 <li>Browse to http://localhost:8080/insight to see the Spring Insight dashboard. Click on the Administration button and then _Collection Plug-ins_ under _Reports and Statistics_.</li>
 <li>If you can see the JSF plugin it's installed and running.</li>
 <li>Run through your application in a way you're sure exercises JSF. Then go back to the Spring Insight dashboard to see the traces.</li>
