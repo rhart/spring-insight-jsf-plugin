@@ -20,6 +20,8 @@ public aspect ManagedBeanOperationCollectionAspect extends
 	protected Operation createOperation(JoinPoint jp) {
 		StringBuilder label = new StringBuilder("JSF Managed Bean (");
 		label.append(jp.getTarget().getClass().getSimpleName());
+		label.append("#");
+		label.append(jp.getSignature().getName());
 		label.append(")");
 		return super.createOperation(jp).type(TYPE).label(label.toString());
 	}
