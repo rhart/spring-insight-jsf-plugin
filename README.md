@@ -48,6 +48,9 @@ cp insight-plugin-jsf-x.x.x.RELEASE.jar tcServer/spring-insight-instance/insight
 </code>
 </pre>
 
+If your version of vFabric tc server uses version 1.8.3 or lower of the insight-collection jar then there are additional install steps. vFabric tc server 2.7.1 and lower will have this version of the jar.
+See here for more details https://github.com/rhart/spring-insight-jsf-plugin/wiki/Additional-Install-Details
+
 <h2>Running the plugin</h2>
 
 <ul>
