@@ -52,7 +52,7 @@ cp insight-plugin-jsf-x.x.x.RELEASE.jar tcServer/spring-insight-instance/insight
 
 <ul>
 <li>Start up vFabric tc Server as usual (see the vFabric tc Server Developer Edition documentation) and make sure your WAR file is deployed. Start your application and make sure it's running.</li>
-<li>Browse to http://localhost:8080/insight to see the Spring Insight dashboard. Click on the Administration button and then _Collection Plug-ins_ under _Reports and Statistics_.</li>
+<li>Browse to http://localhost:8080/insight to see the Spring Insight dashboard. Click on the 'Administration' button and then 'Collection Plug-ins' under 'Reports and Statistics'.</li>
 <li>If you can see the JSF plugin it's installed and running.</li>
 <li>Run through your application in a way you're sure exercises JSF. Then go back to the Spring Insight dashboard to see the traces.</li>
 </ul>
