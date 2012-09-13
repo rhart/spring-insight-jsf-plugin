@@ -3,20 +3,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:cc="http://java.sun.com/jsf/composite/cc">
+
+	<f:event listener="#{personBean.preRender}" type="preRenderView" />
 
 	<h:body>
 		<fieldset>
 			<legend>Salary calculator</legend>
 
-			<cc:salary nameLabel="Name" nameVal="#{personBean.name}" 
-				ageLabel="Age" ageVal="#{personBean.age}" 
-				gradeLabel="Grade" gradeVal="#{personBean.grade}" 
-				yearsOfServiceLabel="Years in service" yearsOfServiceVal="#{personBean.yearsOfService}"
-				calculateButtonLabel="Calculate" calculateButtonAction="#{personBean.calculateSalary}" />
+			<h:form>
+				<h:messages style="color:red;" />
+				<h:panelGrid columns="4" id="textPanel">
+					<h:outputText value="Name :" /> 
+					<h:inputText id="name" value="#{personBean.name}" required="true" requiredMessage="Name is required">
+						<f:validator validatorId="NameValidator" />
+					</h:inputText>
+		 
+					<h:outputText value="Age :" /> 
+					<h:inputText id="age" value="#{personBean.age}" required="true" requiredMessage="Age is required">
+						<f:validator validatorId="AgeValidator" />
+					</h:inputText>
+					
+					<h:outputText value="Grade :" />
+		 			<h:inputText id="grade" value="#{personBean.grade}" required="true" requiredMessage="Grade is required">
+						<f:validator validatorId="GradeValidator" />
+					</h:inputText>
+		 			
+		 			<h:outputText value="Years in service" />
+		  			<h:inputText id="yearsOfService" value="#{personBean.yearsOfService}" required="true" requiredMessage="Years in service is required">
+						<f:validator validatorId="YearsInServiceValidator" />
+					</h:inputText>
+				</h:panelGrid>
+				<h:commandButton action="#{personBean.calculateSalary}" value="Calculate" />
+				<h:commandButton action="showSalary" actionListener="#{personBean.calculateSalary}"  value="Calculate2" />
+				<h:commandButton actionListener="#{personBean.calculateSalary}"  value="Calculate3" />
+				<h:commandButton actionListener="#{personBean.calculateSalary2}"  value="Calculate4" />
+			</h:form>
 	
 			#{personBean.name} you can expect a salary of £#{personBean.salary}
 	
 		</fieldset>
+		
 	</h:body>
 </html>
