@@ -58,4 +58,14 @@ public class PersonBean {
 		return "showSalary";
 
 	}
+	
+	public void calculateSalary2() {
+
+		setSalary(((age * 0.15) + (grade * 0.25) + (yearsOfService * 0.25)) * 10000);
+
+	}
+	
+	public void preRender() {
+		System.out.println("XXX PRE RENDER");
+	}
 }
