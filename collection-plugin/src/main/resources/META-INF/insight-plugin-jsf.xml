@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/insight-idk http://www.springframework.org/schema/insight-idk/insight-idk-1.0.xsd">
 
-	<insight:plugin name="jsf" version="1.0.0.RELEASE" publisher="RSHGW" />
+	<insight:plugin name="jsf" version="1.0.1.RELEASE" publisher="RSHGW" />
 
    	<bean class="com.springsource.insight.plugin.jsf.JSFEndPointAnalyzer"/>
    	
