@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springsource.insight</groupId>
 	<artifactId>insight-plugin-jsf</artifactId>
-	<version>1.0.0.RELEASE</version>
+	<version>1.0.1.RELEASE</version>
 	<name>com.springsource.insight:insight-plugin-jsf</name>
 	<packaging>jar</packaging>
 
 	<properties>
-		<insight.version>1.5.0.RELEASE</insight.version>
-		<aspectj.version>1.6.11</aspectj.version>
+		<insight.version>1.8.3.RELEASE</insight.version>
+		<aspectj.version>1.6.12.M2</aspectj.version>
 		<spring.framework.version>3.0.5.RELEASE</spring.framework.version>
 		<junit.version>4.5</junit.version>
 		<mockito.version>1.8.0</mockito.version>
@@ -41,6 +41,12 @@
 		</dependency>
 
 		<!-- Provided dependencies (part of the user application) -->
+		<dependency>
+			<groupId>javax.el</groupId>
+    		<artifactId>javax.el-api</artifactId>
+		    <version>2.2.4</version>
+		    <scope>provided</scope>
+    	</dependency>
 		<dependency>
 		    <groupId>com.sun.faces</groupId>
 		    <artifactId>jsf-api</artifactId>

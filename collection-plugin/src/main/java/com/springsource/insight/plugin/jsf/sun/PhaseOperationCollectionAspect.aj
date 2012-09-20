@@ -41,6 +41,14 @@ public aspect PhaseOperationCollectionAspect extends
 
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
+		if (jp.getTarget().getClass().getName().equals("com.sun.faces.lifecycle.RenderResponsePhase")) {
+			FacesContext facesContext = (FacesContext) jp.getArgs()[0];
+			return super
+					.createOperation(jp)
+					.type(TYPE)
+					.label(phaseDescriptions.get(jp.getTarget().getClass().getName()) + " - " + facesContext.getViewRoot().getViewId());
+		}
+		
 		return super
 				.createOperation(jp)
 				.type(TYPE)

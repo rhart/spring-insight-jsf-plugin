@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.aspectj.lang.JoinPoint;
 
@@ -46,6 +47,14 @@ public aspect PhaseExecutorOperationCollectionAspect extends
 
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
+		if (jp.getTarget().getClass().getName().equals("org.apache.myfaces.lifecycle.RenderResponseExecutor")) {
+			FacesContext facesContext = (FacesContext) jp.getArgs()[0];
+			return super
+					.createOperation(jp)
+					.type(TYPE)
+					.label(phaseDescriptions.get(jp.getTarget().getClass().getName()) + " - " + facesContext.getViewRoot().getViewId());
+		}
+		
 		return super
 				.createOperation(jp)
 				.type(TYPE)
