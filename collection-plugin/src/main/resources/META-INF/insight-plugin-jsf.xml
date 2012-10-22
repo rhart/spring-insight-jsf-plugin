@@ -5,8 +5,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/insight-idk http://www.springframework.org/schema/insight-idk/insight-idk-1.0.xsd">
 
-	<insight:plugin name="jsf" version="1.0.1.RELEASE" publisher="RSHGW" />
+	<insight:plugin name="jsf" version="1.0.2.RELEASE" publisher="RSHGW" />
+	
+	<insight:operation-view operation="restore_view_phase" template="com/springsource/insight/plugin/jsf/restore_view_phase.ftl"/>
+	<insight:operation-view operation="render_response_phase" template="com/springsource/insight/plugin/jsf/render_response_phase.ftl"/>
+	<insight:operation-view operation="apply_request_values_phase" template="com/springsource/insight/plugin/jsf/apply_request_values_phase.ftl"/>
+	<insight:operation-view operation="invoke_application_phase" template="com/springsource/insight/plugin/jsf/invoke_application_phase.ftl"/>
+	<insight:operation-view operation="process_validations_phase" template="com/springsource/insight/plugin/jsf/process_validations_phase.ftl"/>
+	<insight:operation-view operation="update_model_values_phase" template="com/springsource/insight/plugin/jsf/update_model_values_phase.ftl"/>
+	
+	<insight:operation-view operation="jsf_validator" template="com/springsource/insight/plugin/jsf/validator.ftl"/>
 
+	<!-- 
    	<bean class="com.springsource.insight.plugin.jsf.JSFEndPointAnalyzer"/>
-   	
+   	 -->
 </beans>

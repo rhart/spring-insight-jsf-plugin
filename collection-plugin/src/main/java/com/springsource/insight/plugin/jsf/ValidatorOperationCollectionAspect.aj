@@ -20,9 +20,20 @@ public aspect ValidatorOperationCollectionAspect extends
 
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
-		StringBuilder label = new StringBuilder("JSF Validator (");
+		UIComponent uiComponent = (UIComponent) jp.getArgs()[1];
+		Object object = jp.getArgs()[2];
+
+		StringBuilder label = new StringBuilder("JSF Validator [");
 		label.append(jp.getTarget().getClass().getSimpleName());
-		label.append(")");
-		return super.createOperation(jp).type(TYPE).label(label.toString());
+		label.append("]");
+		return super
+				.createOperation(jp)
+				.type(TYPE)
+				.label(label.toString())
+				.put("uiComponentId", uiComponent.getId())
+				.put("value", object.toString())
+				.put("validatorClass", jp.getTarget().getClass().getName())
+				.put("validatorClassMethod",
+						jp.getSignature().toLongString());
 	}
 }
