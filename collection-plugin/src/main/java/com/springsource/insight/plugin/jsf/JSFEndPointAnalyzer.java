@@ -13,7 +13,7 @@ import com.springsource.insight.intercept.trace.Trace;
 public class JSFEndPointAnalyzer implements EndPointAnalyzer {
 
 	public EndPointAnalysis locateEndPoint(Trace trace) {
-		Frame lifecycleExecuteFrame = trace
+		/*Frame lifecycleExecuteFrame = trace
 				.getFirstFrameOfType(LifecycleExecuteOperationCollectionAspect.TYPE);
 		if (lifecycleExecuteFrame == null) {
 			return null;
@@ -37,6 +37,8 @@ public class JSFEndPointAnalyzer implements EndPointAnalyzer {
 		int score = FrameUtil.getDepth(lifecycleExecuteFrame);
 		return new EndPointAnalysis(trace.getRange(),
 				EndPointName.valueOf(resourceKey), resourceLabel,
-				exampleRequest, score);
+				exampleRequest, score);*/
+		
+		return null;
 	}
 }
