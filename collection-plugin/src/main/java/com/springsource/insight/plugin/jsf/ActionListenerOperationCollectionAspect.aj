@@ -53,14 +53,13 @@ public aspect ActionListenerOperationCollectionAspect extends
 	
 			if (methodExpression != null) {
 				fromAction = methodExpression.getExpressionString();
-			}
-	
-			else if (methodBinding != null) {
+			} else if (methodBinding != null) {
 				fromAction = methodBinding.getExpressionString();
 			}
 		}
+		
 
-		StringBuilder label = new StringBuilder("JSF Action (");
+		StringBuilder label = new StringBuilder("XX JSF Action (");
 		label.append(fromAction);
 		label.append(")");
 		return super.createOperation(jp).type(TYPE).label(label.toString());
