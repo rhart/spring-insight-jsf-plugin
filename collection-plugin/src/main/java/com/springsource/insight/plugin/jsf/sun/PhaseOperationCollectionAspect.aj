@@ -42,7 +42,7 @@ public aspect PhaseOperationCollectionAspect extends
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
 		String targetClassName = jp.getTarget().getClass().getName();
-		if (targetClassName.equals("com.sun.faces.lifecycle.RenderResponsePhase") || targetClassName.equals("com.sun.faces.lifecycle.RestoreViewPhase")) {
+		if (targetClassName.equals("com.sun.faces.lifecycle.RenderResponsePhase")) {
 			FacesContext facesContext = (FacesContext) jp.getArgs()[0];
 			return super
 					.createOperation(jp)

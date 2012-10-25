@@ -43,36 +43,36 @@
     	<profile>
     		<id>Mojarra</id>
     		<activation>
-    			<activeByDefault>false</activeByDefault>
+    			<activeByDefault>true</activeByDefault>
     		</activation>
     		<dependencies>
 		        <dependency>
 		            <groupId>com.sun.faces</groupId>
 		            <artifactId>jsf-api</artifactId>
-				    <version>2.1.7</version>
+				    <version>2.1.13</version>
 		        </dependency>
 		        <dependency>
 		            <groupId>com.sun.faces</groupId>
 		            <artifactId>jsf-impl</artifactId>
-				    <version>2.1.7</version>
+				    <version>2.1.13</version>
 		        </dependency>
     		</dependencies>
     	</profile>
     	<profile>
     		<id>MyFaces</id>
     		<activation>
-    			<activeByDefault>true</activeByDefault>
+    			<activeByDefault>false</activeByDefault>
     		</activation>
     		<dependencies>
 		        <dependency>
 		            <groupId>org.apache.myfaces.core</groupId>
 		            <artifactId>myfaces-api</artifactId>
-		            <version>2.1.8</version>
+		            <version>2.1.9</version>
 		        </dependency>
 		        <dependency>
 		            <groupId>org.apache.myfaces.core</groupId>
 		            <artifactId>myfaces-impl</artifactId>
-		            <version>2.1.8</version>
+		            <version>2.1.9</version>
 		        </dependency>
     		</dependencies>
     	</profile>

@@ -36,9 +36,11 @@
 					</h:inputText>
 				</h:panelGrid>
 				<h:commandButton action="#{personBean.calculateSalary}" value="Calculate" />
-				<h:commandButton action="showSalary" actionListener="#{personBean.calculateSalary}"  value="Calculate2" />
-				<h:commandButton actionListener="#{personBean.calculateSalary}"  value="Calculate3" />
-				<h:commandButton actionListener="#{personBean.calculateSalary2}"  value="Calculate4" />
+				<h:commandButton action="showSalary" actionListener="#{personBean.calculateSalaryListener}"  value="Calculate2" />
+				<h:commandButton actionListener="#{personBean.calculateSalaryListener}" value="Calculate3" />
+				<h:commandButton value="Calculate4">
+					<f:actionListener type="com.springsource.insight.plugin.jsf.test.bean.PersonBean" />
+				</h:commandButton>
 			</h:form>
 	
 			#{personBean.name} you can expect a salary of £#{personBean.salary}
