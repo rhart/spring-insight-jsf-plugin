@@ -1,9 +1,12 @@
 package com.springsource.insight.plugin.jsf.test.bean;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 
 @ManagedBean
-public class PersonBean {
+public class PersonBean implements ActionListener {
 
 	private String name;
 	private int age;
@@ -52,20 +55,19 @@ public class PersonBean {
 	}
 
 	public String calculateSalary() {
-
 		setSalary(((age * 0.15) + (grade * 0.25) + (yearsOfService * 0.25)) * 10000);
-
 		return "showSalary";
-
 	}
 	
-	public void calculateSalary2() {
-
-		setSalary(((age * 0.15) + (grade * 0.25) + (yearsOfService * 0.25)) * 10000);
-
+	public void calculateSalaryListener(ActionEvent event) {
+	    calculateSalary();
 	}
-	
-	public void preRender() {
-		System.out.println("XXX PRE RENDER");
-	}
+
+    public void processAction(ActionEvent actionEvent) throws AbortProcessingException {
+        calculateSalary();
+    }
+    
+    public void preRender() {
+        System.out.println("XXX PRE RENDER");
+    }
 }
