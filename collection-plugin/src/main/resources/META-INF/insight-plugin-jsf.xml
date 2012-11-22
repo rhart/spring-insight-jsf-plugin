@@ -7,16 +7,17 @@
 
 	<insight:plugin name="jsf" version="1.0.2.RELEASE" publisher="RSHGW" />
 	
-	<insight:operation-view operation="restore_view_phase" template="com/springsource/insight/plugin/jsf/restore_view_phase.ftl"/>
-	<insight:operation-view operation="render_response_phase" template="com/springsource/insight/plugin/jsf/render_response_phase.ftl"/>
-	<insight:operation-view operation="apply_request_values_phase" template="com/springsource/insight/plugin/jsf/apply_request_values_phase.ftl"/>
-	<insight:operation-view operation="invoke_application_phase" template="com/springsource/insight/plugin/jsf/invoke_application_phase.ftl"/>
-	<insight:operation-view operation="process_validations_phase" template="com/springsource/insight/plugin/jsf/process_validations_phase.ftl"/>
-	<insight:operation-view operation="update_model_values_phase" template="com/springsource/insight/plugin/jsf/update_model_values_phase.ftl"/>
+	<insight:operation-view operation="restore_view_phase_operation" template="com/springsource/insight/plugin/jsf/restore_view_phase.ftl"/>
+	<insight:operation-view operation="render_response_phase_operation" template="com/springsource/insight/plugin/jsf/render_response_phase.ftl"/>
+	<insight:operation-view operation="apply_request_values_phase_operation" template="com/springsource/insight/plugin/jsf/apply_request_values_phase.ftl"/>
+	<insight:operation-view operation="invoke_application_phase_operation" template="com/springsource/insight/plugin/jsf/invoke_application_phase.ftl"/>
+	<insight:operation-view operation="process_validations_phase_operation" template="com/springsource/insight/plugin/jsf/process_validations_phase.ftl"/>
+	<insight:operation-view operation="update_model_values_phase_operation" template="com/springsource/insight/plugin/jsf/update_model_values_phase.ftl"/>
 	
-	<insight:operation-view operation="jsf_validator" template="com/springsource/insight/plugin/jsf/validator.ftl"/>
+	<insight:operation-view operation="jsf_validator_operation" template="com/springsource/insight/plugin/jsf/validator.ftl"/>
+	<insight:operation-view operation="jsf_navigation_operation" template="com/springsource/insight/plugin/jsf/navigation.ftl"/>
+	<insight:operation-view operation="jsf_action_listener_operation" template="com/springsource/insight/plugin/jsf/action.ftl"/>
 
-	<!-- 
-   	<bean class="com.springsource.insight.plugin.jsf.JSFEndPointAnalyzer"/>
-   	 -->
+	<bean class="com.springsource.insight.plugin.jsf.JSFActionEndPointAnalyzer"/>
+	 
 </beans>

@@ -13,7 +13,7 @@ import com.springsource.insight.intercept.operation.OperationType;
 public aspect ValidatorOperationCollectionAspect extends
 		MethodOperationCollectionAspect {
 
-	static final OperationType TYPE = OperationType.valueOf("jsf_validator");
+	static final OperationType TYPE = OperationType.valueOf("jsf_validator_operation");
 
 	public pointcut collectionPoint()
         : execution(public void Validator.validate(FacesContext, UIComponent, Object));
@@ -26,14 +26,9 @@ public aspect ValidatorOperationCollectionAspect extends
 		StringBuilder label = new StringBuilder("JSF Validator [");
 		label.append(jp.getTarget().getClass().getSimpleName());
 		label.append("]");
-		return super
-				.createOperation(jp)
-				.type(TYPE)
-				.label(label.toString())
+		return super.createOperation(jp).type(TYPE).label(label.toString())
 				.put("uiComponentId", uiComponent.getId())
-				.put("value", object.toString())
-				.put("validatorClass", jp.getTarget().getClass().getName())
-				.put("validatorClassMethod",
-						jp.getSignature().toLongString());
+				.put("value", object.toString());
 	}
+
 }

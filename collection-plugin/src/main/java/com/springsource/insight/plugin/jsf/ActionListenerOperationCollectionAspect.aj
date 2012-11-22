@@ -23,11 +23,8 @@ import com.springsource.insight.intercept.operation.OperationType;
 @SuppressWarnings("deprecation")
 public aspect ActionListenerOperationCollectionAspect extends MethodOperationCollectionAspect {
 
-    static final OperationType TYPE = OperationType.valueOf("jsf_action_listener");
+    static final OperationType TYPE = OperationType.valueOf("jsf_action_listener_operation");
 
-/*    public pointcut collectionPoint()
-        : execution(public void ActionListener.processAction(ActionEvent));
-*/
     public pointcut collectionPoint()
         : execution(public void ActionListener.processAction(ActionEvent))
             && !(within(com.sun.faces.facelets.tag.jsf.core.ActionListenerHandler)
@@ -84,11 +81,16 @@ public aspect ActionListenerOperationCollectionAspect extends MethodOperationCol
             }
         }
         
-        Operation operation = super.createOperation(jp).type(TYPE).label("JSF Action");
+        StringBuilder label = new StringBuilder("JSF Action [");
+		label.append(fromAction);
+		label.append("]");
+        Operation operation = super.createOperation(jp).type(TYPE).label(label.toString());
         if (fromAction != null) {
             Class<?> implementationClass = getBeanClass(ctx, elContext, fromAction);
             operation.put("implementationClass", implementationClass != null ? implementationClass.getName() : "unknown")
-                        .put("implementationClassMethod", methodInfo != null ? getBeanMethodSignature(methodInfo) : "unknown()");
+                        .put("implementationClassMethod", methodInfo != null ? methodInfo.getName() : "unknown")
+                        .put("implementationClassMethodSignature", methodInfo != null ? getBeanMethodSignature(methodInfo) : "unknown()")
+                        .put("fromAction", fromAction);
         }
         return operation;
     }
