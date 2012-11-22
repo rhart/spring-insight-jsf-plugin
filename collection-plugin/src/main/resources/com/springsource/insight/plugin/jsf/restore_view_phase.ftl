@@ -7,6 +7,6 @@
 </@insight.group>
 
 <@insight.group label="Implementation Details">
-    <@insight.entry name="Implementation Class" value=operation.implementationClass />
-    <@insight.entry name="Implementation Method" value=operation.implementationClassMethod />
+    <@insight.entry name="Implementation Class" value=operation.className />
+    <@insight.entry name="Implementation Method" value=operation.methodName />
 </@insight.group>

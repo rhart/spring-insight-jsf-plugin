@@ -1,8 +1,9 @@
 <#ftl strip_whitespace=true>
 <#import "/insight-1.0.ftl" as insight />
 
-<@insight.group label="Phase Details">
-    <@insight.entry name="View Id" value=operation.viewId />
+<@insight.group label="Action Details">
+    <@insight.entry name="Target Class" value=operation.implementationClass />
+    <@insight.entry name="Target Method Signature" value=operation.implementationClassMethodSignature />
 </@insight.group>
 
 <@insight.group label="Implementation Details">
