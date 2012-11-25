@@ -19,13 +19,14 @@ public aspect NavigationHandlerOperationCollectionAspect extends
 
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
-		String outcome = jp.getArgs()[2].toString();
+        String fromAction = jp.getArgs()[1] != null ? jp.getArgs()[1].toString() : "No fromAction";
+        String outcome = jp.getArgs()[2] != null ? jp.getArgs()[2].toString() : "No outcome";
 
 		StringBuilder label = new StringBuilder("JSF Navigation [");
 		label.append(outcome);
 		label.append("]");
 		return super.createOperation(jp).type(TYPE).label(label.toString())
-				.put("fromAction", jp.getArgs()[1].toString())
+				.put("fromAction", fromAction)
 				.put("outcome", outcome);
 	}
 

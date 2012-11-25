@@ -17,6 +17,7 @@
 	<insight:operation-view operation="jsf_validator_operation" template="com/springsource/insight/plugin/jsf/validator.ftl"/>
 	<insight:operation-view operation="jsf_navigation_operation" template="com/springsource/insight/plugin/jsf/navigation.ftl"/>
 	<insight:operation-view operation="jsf_action_listener_operation" template="com/springsource/insight/plugin/jsf/action.ftl"/>
+	<insight:operation-view operation="jsf_phase_listener_operation" template="com/springsource/insight/plugin/jsf/phase_listener.ftl"/>
 
 	<bean class="com.springsource.insight.plugin.jsf.JSFActionEndPointAnalyzer"/>
 	 
