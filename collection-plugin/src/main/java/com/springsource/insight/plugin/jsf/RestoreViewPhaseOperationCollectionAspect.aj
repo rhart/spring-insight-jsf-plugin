@@ -1,36 +1,48 @@
 package com.springsource.insight.plugin.jsf;
 
+import java.util.Map;
+
 import javax.faces.context.FacesContext;
 
-import org.apache.myfaces.lifecycle.DefaultRestoreViewSupport;
-import org.apache.myfaces.lifecycle.RestoreViewSupport;
 import org.aspectj.lang.JoinPoint;
 
 import com.springsource.insight.collection.method.MethodOperationCollectionAspect;
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
 
-public aspect RestoreViewPhaseOperationCollectionAspect extends
-		MethodOperationCollectionAspect {
+public aspect RestoreViewPhaseOperationCollectionAspect extends AbstractRestoreViewPhaseOperationCollectionAspect {
 
 	static final OperationType TYPE = OperationType
 			.valueOf("restore_view_phase_operation");
 
 	public pointcut collectionPoint()
-        : execution(boolean org.apache.myfaces.lifecycle.RestoreViewExecutor.execute(FacesContext))
-        	|| execution (void com.sun.faces.lifecycle.RestoreViewPhase.execute(FacesContext));
+        : execution (void com.sun.faces.lifecycle.RestoreViewPhase.execute(FacesContext));
+	
+    @SuppressWarnings("rawtypes")
+	protected String calculateViewId(FacesContext facesContext) {
+        Map requestMap = facesContext.getExternalContext().getRequestMap();
+        String viewId = (String)
+          requestMap.get("javax.servlet.include.path_info");
+        if (viewId == null) {
+            viewId = facesContext.getExternalContext().getRequestPathInfo();
+        }
 
-	@Override
-	protected Operation createOperation(JoinPoint jp) {
-		FacesContext facesContext = (FacesContext) jp.getArgs()[0];
-		RestoreViewSupport restoreViewSupport = new DefaultRestoreViewSupport();
-		String viewId = restoreViewSupport.calculateViewId(facesContext);
+        // It could be that this request was mapped using
+        // a prefix mapping in which case there would be no
+        // path_info.  Query the servlet path.
+        if (viewId == null) {
+            viewId = (String)
+              requestMap.get("javax.servlet.include.servlet_path");
+        }
 
-		StringBuilder label = new StringBuilder("JSF Restore View Phase [");
-		label.append(viewId);
-		label.append("]");
-		return super.createOperation(jp).type(TYPE).label(label.toString())
-				.put("viewId", viewId)
-				.put("isPostBack", restoreViewSupport.isPostback(facesContext));
+        if (viewId == null) {
+            viewId = facesContext.getExternalContext().getRequestServletPath();
+        }
+        
+        if (viewId == null) {
+            viewId = "Unknown View";
+        }
+        
+        return viewId;
 	}
 }
