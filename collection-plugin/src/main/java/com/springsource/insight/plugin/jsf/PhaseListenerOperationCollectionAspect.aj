@@ -18,8 +18,9 @@ public aspect PhaseListenerOperationCollectionAspect extends
 	static final OperationType TYPE = OperationType.valueOf("jsf_phase_listener_operation");
 
 	public pointcut collectionPoint()
-        : execution(public void PhaseListener.beforePhase(PhaseEvent))
-            || execution(public void PhaseListener.afterPhase(PhaseEvent));
+        : (execution(public void PhaseListener.beforePhase(PhaseEvent))
+            || execution(public void PhaseListener.afterPhase(PhaseEvent)))
+            && !(within(com.sun.faces.**) || within(org.apache.myfaces.**));
 
 	@Override
 	protected Operation createOperation(JoinPoint jp) {

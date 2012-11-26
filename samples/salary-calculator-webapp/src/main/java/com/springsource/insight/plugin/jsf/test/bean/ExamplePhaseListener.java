@@ -17,6 +17,6 @@ public class ExamplePhaseListener implements PhaseListener {
     }
 
     public PhaseId getPhaseId() {
-        return PhaseId.ANY_PHASE;
+        return PhaseId.RENDER_RESPONSE;
     }
 }
