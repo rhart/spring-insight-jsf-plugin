@@ -7,7 +7,6 @@ import javax.faces.event.MethodExpressionActionListener;
 
 import com.springsource.insight.intercept.operation.OperationType;
 
-@SuppressWarnings("deprecation")
 public aspect ActionListenerOperationCollectionAspect extends AbstractActionListenerOperationCollectionAspect {
 
     static final OperationType TYPE = OperationType.valueOf("jsf_action_listener_operation");
@@ -15,8 +14,7 @@ public aspect ActionListenerOperationCollectionAspect extends AbstractActionList
     public pointcut collectionPoint()
         : execution(public void ActionListener.processAction(ActionEvent))
             && !(within(com.sun.faces.facelets.tag.jsf.core.ActionListenerHandler)
-                    || within(org.apache.myfaces.view.facelets.tag.jsf.core.ActionListenerHandler)
-                    || within(org.apache.myfaces.view.facelets.tag.jsf.PartialMethodExpressionActionListener));
+                    || within(org.apache.myfaces.application.ActionListenerImpl));
 
     protected Object loadState(FacesContext ctx, MethodExpressionActionListener listener) {
         return null;

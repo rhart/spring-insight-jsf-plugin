@@ -4,10 +4,6 @@ import java.util.Map;
 
 import javax.faces.context.FacesContext;
 
-import org.aspectj.lang.JoinPoint;
-
-import com.springsource.insight.collection.method.MethodOperationCollectionAspect;
-import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
 
 public aspect RestoreViewPhaseOperationCollectionAspect extends AbstractRestoreViewPhaseOperationCollectionAspect {
