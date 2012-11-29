@@ -4,7 +4,7 @@
 	<groupId>com.springsource.insight</groupId>
 	<artifactId>salary-calculator-webapp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.0-RELEASE</version>
+	<version>1.0.2-RELEASE</version>
 	<name>salary-calculator-webapp Maven Webapp</name>
 
     <dependencies>
@@ -43,7 +43,7 @@
     	<profile>
     		<id>Mojarra</id>
     		<activation>
-    			<activeByDefault>false</activeByDefault>
+    			<activeByDefault>true</activeByDefault>
     		</activation>
     		<dependencies>
 		        <dependency>
@@ -61,7 +61,7 @@
     	<profile>
     		<id>MyFaces</id>
     		<activation>
-    			<activeByDefault>true</activeByDefault>
+    			<activeByDefault>false</activeByDefault>
     		</activation>
     		<dependencies>
 		        <dependency>
