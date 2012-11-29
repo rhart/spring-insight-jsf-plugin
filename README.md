@@ -7,8 +7,10 @@ Spring Insight runs in the VMware vFabric tc Server.  See http://www.springsourc
 It provides instrumentation for the following aspects of the JSF web framework:
 <ul>
 <li>All lifecyle phase executions</li>
-<li>Managed bean operations</li>
+<li>Actions</li>
 <li>Validator operations</li>
+<li>Action Listeners</li>
+<li>Phase Listeners</li>
 </ul>
 
 <h2>Compatability</h2>
