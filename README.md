@@ -27,7 +27,7 @@ Spring Insight 1.5+
 
 <h2>Installing the plugin</h2>
 
-Download the latest release from https://github.com/rhart/spring-insight-jsf-plugin/downloads
+Download the latest release from https://github.com/rhart/spring-insight-jsf-plugin/tree/master/dist
 
 or 
 
