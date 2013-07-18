@@ -5,6 +5,8 @@ import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
 import javax.faces.event.MethodExpressionActionListener;
 
+import org.apache.myfaces.view.facelets.tag.jsf.PartialMethodExpressionActionListener;
+
 import com.springsource.insight.intercept.operation.OperationType;
 
 public aspect ActionListenerOperationCollectionAspect extends AbstractActionListenerOperationCollectionAspect {
@@ -14,9 +16,18 @@ public aspect ActionListenerOperationCollectionAspect extends AbstractActionList
     public pointcut collectionPoint()
         : execution(public void ActionListener.processAction(ActionEvent))
             && !(within(com.sun.faces.facelets.tag.jsf.core.ActionListenerHandler)
-                    || within(org.apache.myfaces.application.ActionListenerImpl));
+                    || within(org.apache.myfaces.view.facelets.tag.jsf.core.ActionListenerHandler));
 
-    protected Object loadState(FacesContext ctx, MethodExpressionActionListener listener) {
-        return null;
-    }
+    @Override
+	protected Object loadState(FacesContext ctx,
+			MethodExpressionActionListener listener) {
+		Object state = null;
+		if (listener instanceof PartialMethodExpressionActionListener) {
+			PartialMethodExpressionActionListener partialListener = (PartialMethodExpressionActionListener) listener;
+			partialListener.clearInitialState();
+			state = partialListener.saveState(ctx);
+			partialListener.markInitialState();
+		}
+		return state;
+	}
 }
