@@ -17,6 +17,7 @@ import org.aspectj.lang.JoinPoint;
 import com.springsource.insight.collection.method.MethodOperationCollectionAspect;
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
+import com.springsource.insight.plugin.jsf.FacesUtils;
 
 @SuppressWarnings("deprecation")
 public abstract aspect AbstractActionListenerOperationCollectionAspect extends MethodOperationCollectionAspect {
@@ -66,7 +67,7 @@ public abstract aspect AbstractActionListenerOperationCollectionAspect extends M
                 if (methodBinding != null && methodBinding.getExpressionString() != null
                         && methodBinding.getExpressionString().startsWith("#{")) {
                     fromAction = methodBinding.getExpressionString();
-                    methodInfo = new MethodInfo(getBeanMethodName(fromAction), methodBinding.getType(ctx), null);
+                    methodInfo = new MethodInfo(FacesUtils.extractMethodNameFromExpression(fromAction), methodBinding.getType(ctx), null);
                 }
             }
         }
@@ -93,25 +94,13 @@ public abstract aspect AbstractActionListenerOperationCollectionAspect extends M
     
     protected Class<?> getBeanClass(FacesContext ctx, ELContext elContext, String expression) {
         Class<?> toReturn = null;
-        int index = expression.lastIndexOf('.');
 
-        if (index > -1) {
-            String beanName = expression.substring(0, index);
-            ValueExpression valueExpression = ctx.getApplication().getExpressionFactory().createValueExpression(elContext, beanName + "}", Object.class);
-            Object bean = valueExpression.getValue(elContext);
-            toReturn = bean != null ? bean.getClass() : null;
-        }
+        String beanName = FacesUtils.extractBeanNameFromExpression(expression);
+        ValueExpression valueExpression = ctx.getApplication().getExpressionFactory().createValueExpression(elContext, "#{" + beanName + "}", Object.class);
+        Object bean = valueExpression.getValue(elContext);
+        toReturn = bean != null ? bean.getClass() : null;
 
         return toReturn;
-    }
-
-    protected String getBeanMethodName(String expression) {
-        String result = null;
-        int index = expression.lastIndexOf('.');
-        if (index > -1) {
-            result = expression.substring(index + 1, expression.length() - 1);
-        }
-        return result;
     }
     
     protected String getBeanMethodSignature(MethodInfo methodInfo) {
