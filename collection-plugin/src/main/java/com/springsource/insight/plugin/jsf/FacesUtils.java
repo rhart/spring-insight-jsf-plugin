@@ -16,20 +16,24 @@ public final class FacesUtils {
 	 * @return the name of the bean used in the expression
 	 */
 	public static String extractBeanNameFromExpression(String expression) {
-		String beanName = expression;
+		String beanName = null;
 
-		int expressionStartIndex = expression.indexOf(JSF_EXPRESSION_START);
-		int methodParameterStartIndex = expression.indexOf("(");
-		
-		if (methodParameterStartIndex > -1) {
-			// expresison has parameters so strip off
-			beanName = beanName.substring(0, methodParameterStartIndex);
-		} 
-		
-		int index = beanName.lastIndexOf('.');
+		if (expression.startsWith(JSF_EXPRESSION_START)) {
+			beanName = expression;
 
-		beanName = beanName.substring(expressionStartIndex
-				+ JSF_EXPRESSION_START.length(), index);
+			int expressionStartIndex = expression.indexOf(JSF_EXPRESSION_START);
+			int methodParameterStartIndex = expression.indexOf("(");
+
+			if (methodParameterStartIndex > -1) {
+				// expresison has parameters so strip off
+				beanName = beanName.substring(0, methodParameterStartIndex);
+			}
+
+			int index = beanName.lastIndexOf('.');
+
+			beanName = beanName.substring(expressionStartIndex
+					+ JSF_EXPRESSION_START.length(), index);
+		}
 
 		return beanName;
 	}
@@ -44,9 +48,11 @@ public final class FacesUtils {
 	 */
 	public static String extractMethodNameFromExpression(String expression) {
 		String result = null;
-		
+
 		String beanName = FacesUtils.extractBeanNameFromExpression(expression);
-		result = expression.substring((JSF_EXPRESSION_START.length() + beanName.length() + 1), expression.length() - 1);
+		result = expression.substring(
+				(JSF_EXPRESSION_START.length() + beanName.length() + 1),
+				expression.length() - 1);
 
 		return result;
 	}
