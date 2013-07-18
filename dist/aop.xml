@@ -1,0 +1,58 @@
+<aspectj>
+
+	<!-- -verbose -showWeaveInfo  -->
+	<weaver options="-Xlint:ignore -Xset:typeDemotion=true,typeDemotionDebug=false,runMinimalMemory=false,weaveJavaxPackages=true">
+	  	<!--  Include everything but a few explicit excludes -->
+	  	<include within="*"/>
+
+	    <!--  Exclude the Insight application except for the dashboard.  -->
+        <exclude within="com.springsource.insight.util..*"/>
+        <exclude within="com.springsource.insight.collection..*"/>
+        <exclude within="com.springsource.insight.intercept..*"/>
+        
+         <!-- something bothers AspectJ with these -->
+         <exclude within="org.jboss.seam.cache..*" />
+         <!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=117854 -->
+         <exclude within="*..*CGLIB*" />
+
+        <!--  Don't exclude the repo, we are using it for TraceRepo endpoint details 
+        <exclude within="com.springsource.insight.repo..*"/>
+        -->
+        
+        <!--  Don't exclude our plugins .. needed to use our dashboard & run the plugin tests 
+        <exclude within="com.springsource.insight..*"/>        
+        -->
+	  	 
+	  	<!-- Not generally good to exclude, but the current set of plugins don't weave into these-->
+	  	<exclude within="org.dom4j..*"/>
+	  	
+        <!-- AspectJ doesn't seem to like Sun's XML parser classes -->
+        <!-- but allow Sun's internal implementation of javax.mail for the mail plugin -->
+		<exclude within="com.sun..* AND (!com.sun.mail..*) AND (!com.sun.faces..*)"/>
+
+		<exclude within="javassist..*"/>
+		<exclude within="net.sf.cglib..*"/>
+			<!-- NOTE: these exclusions interfere with the logging plugin -->
+		<!-- exclude within="org.apache.log4j..*"/ -->
+		<!-- exclude within="org.apache.commons.logging..*"/ -->
+		<exclude within="org.springframework.asm..*"/>
+	  		
+  		<!-- <exclude within="com.springsource.metrics.dashboard..*"/> --> 
+  		<exclude within="groovy..*"/>
+  		<exclude within="org.codehaus.groovy..* &amp;&amp; !org.codehaus.groovy.grails.web.servlet.mvc..*"/>
+                
+  		<exclude within="org.yaml..*"/>
+  		<exclude within="org.tuckey..*"/>
+  		
+  		<!-- We don't want to weave into util classes -->
+  		<exclude within="org.springframework.util..*"/>
+  		<!-- Annotations, we shall not weave into -->
+  		<exclude within="org.springframework.stereotype..*"/>
+  		
+  		<!-- Exclude all exception, it doesn't look likely that we will ever weave into exception classes-->
+  		<exclude within="*Exception"/>
+  		
+  		<!--  Exclude all javax but include javax.jms (for jms plugin) and javax.mail (for mail plugin) -->
+  		<exclude within="javax..* AND (!javax.jms..*) AND (!javax.mail..*) AND (!javax.faces..*)" />
+	</weaver>
+</aspectj>
