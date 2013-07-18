@@ -16,12 +16,19 @@ public final class FacesUtils {
 	 * @return the name of the bean used in the expression
 	 */
 	public static String extractBeanNameFromExpression(String expression) {
-		String beanName = null;
+		String beanName = expression;
 
 		int expressionStartIndex = expression.indexOf(JSF_EXPRESSION_START);
-		int index = expression.indexOf('.');
+		int methodParameterStartIndex = expression.indexOf("(");
+		
+		if (methodParameterStartIndex > -1) {
+			// expresison has parameters so strip off
+			beanName = beanName.substring(0, methodParameterStartIndex);
+		} 
+		
+		int index = beanName.lastIndexOf('.');
 
-		beanName = expression.substring(expressionStartIndex
+		beanName = beanName.substring(expressionStartIndex
 				+ JSF_EXPRESSION_START.length(), index);
 
 		return beanName;
@@ -37,9 +44,9 @@ public final class FacesUtils {
 	 */
 	public static String extractMethodNameFromExpression(String expression) {
 		String result = null;
-
-		int index = expression.indexOf('.');
-		result = expression.substring(index + 1, expression.length() - 1);
+		
+		String beanName = FacesUtils.extractBeanNameFromExpression(expression);
+		result = expression.substring((JSF_EXPRESSION_START.length() + beanName.length() + 1), expression.length() - 1);
 
 		return result;
 	}

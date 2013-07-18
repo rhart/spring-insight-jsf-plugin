@@ -44,6 +44,16 @@ public class FacesUtilTest {
 		String beanName = FacesUtils.extractBeanNameFromExpression(expression);
 		Assert.assertEquals("myBean", beanName);
 	}
+	
+	/**
+	 * Test getting a bean name from a complex JSF expression with nested beans.
+	 */
+	@Test
+	public void testBeanNameFromComplexExpressionNestedBeans() throws Exception {
+		String expression = "#{myController.myBean.myMethod(anotherBean.anotherMethod)}";
+		String beanName = FacesUtils.extractBeanNameFromExpression(expression);
+		Assert.assertEquals("myController.myBean", beanName);
+	}
 
 	/**
 	 * Test getting a method name from a simple JSF expression.
@@ -62,6 +72,17 @@ public class FacesUtilTest {
 	@Test
 	public void testMethodNameFromComplexExpression() throws Exception {
 		String expression = "#{myBean.myMethod(anotherBean.anotherMethod)}";
+		String methodName = FacesUtils
+				.extractMethodNameFromExpression(expression);
+		Assert.assertEquals("myMethod(anotherBean.anotherMethod)", methodName);
+	}
+	
+	/**
+	 * Test getting a method name from a complex JSF expression with nested beans.
+	 */
+	@Test
+	public void testMethodNameFromComplexExpressionNestedBeans() throws Exception {
+		String expression = "#{myController.myBean.myMethod(anotherBean.anotherMethod)}";
 		String methodName = FacesUtils
 				.extractMethodNameFromExpression(expression);
 		Assert.assertEquals("myMethod(anotherBean.anotherMethod)", methodName);
