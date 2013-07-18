@@ -17,7 +17,7 @@ public aspect MyFacesActionListenerOperationCollectionAspect extends
 
 	public pointcut collectionPoint()
         : execution(public void ActionListener.processAction(ActionEvent))
-            && !(within(org.apache.myfaces.view.facelets.tag.jsf.core.ActionListenerHandler) || within(com.sun.faces.**));
+            && !(within(org.apache.myfaces.view.facelets.tag.jsf.core.ActionListenerHandler) || within(com.sun.faces.application.ActionListenerImpl));
 
 	@Override
 	protected Object loadState(FacesContext ctx,

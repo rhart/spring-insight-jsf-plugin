@@ -21,6 +21,6 @@ public aspect InvokeApplicationPhaseOperationCollectionAspect extends
 	@Override
 	protected Operation createOperation(JoinPoint jp) {
 		return super.createOperation(jp).type(TYPE)
-				.label("JSF Invoke Apllication Phase");
+				.label("JSF Invoke Application Phase");
 	}
 }
