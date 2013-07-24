@@ -17,7 +17,6 @@ import org.aspectj.lang.JoinPoint;
 import com.springsource.insight.collection.method.MethodOperationCollectionAspect;
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
-import com.springsource.insight.plugin.jsf.FacesUtils;
 
 @SuppressWarnings("deprecation")
 public abstract aspect AbstractActionListenerOperationCollectionAspect extends MethodOperationCollectionAspect {
